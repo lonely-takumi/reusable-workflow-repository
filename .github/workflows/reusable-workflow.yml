@@ -7,6 +7,10 @@ on:
                 description: "input 1"
                 required: true
                 type: string
+        secrets:
+            cloud_id:
+                required: true
+                description: "Azure Id"
 
 jobs:
     first_job:
@@ -14,3 +18,5 @@ jobs:
         steps:
             - name: print input
               run: echo "${{ inputs.input_1 }}"
+            - name: print azure id
+              run: echo "${{ secrets.cloud_id }}"

@@ -1,10 +1,9 @@
-name: test action
+name: example-action
 
 inputs:
   input_1:
     description: 'Input 1'
     required: true
-    default: 'default value'
 
 runs:
   using: "composite"

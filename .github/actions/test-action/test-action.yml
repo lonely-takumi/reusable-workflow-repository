@@ -1,0 +1,16 @@
+name: test action
+
+inputs:
+  input_1:
+    description: 'Input 1'
+    required: true
+    default: 'default value'
+
+runs:
+  using: "composite"
+  steps:
+    - name: step 1
+      run: echo ${{ inputs.input_1 }}
+    
+    - name: step 2
+      run: echo "step 2"

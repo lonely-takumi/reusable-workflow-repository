@@ -17,7 +17,6 @@ runs:
       run: |
         if [ "${{ inputs.input_1 }}" == "masterID" ]; then
           echo "step 1 success"
-          exit 1
         else
           echo "step 1 failed"
         fi

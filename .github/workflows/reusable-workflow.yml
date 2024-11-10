@@ -28,6 +28,8 @@ jobs:
             - name: checkout
               uses: actions/checkout@v4
               with:
+                repository: lonely-takumi/reusable-workflow-repository
+                ref: main
                 path: sub
             - name: test action
               uses: ./sub/.github/actions/test-action

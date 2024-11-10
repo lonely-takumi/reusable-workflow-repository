@@ -15,7 +15,7 @@ runs:
     - name: check step 1
       shell: bash
       run: |
-        if [ "${{ inputs.input_1 }}" == "masterID" ]; then
+        if [ "${{ inputs.input_1 }}" == "masterId" ]; then
           echo "step 1 success"
         else
           echo "step 1 failed"

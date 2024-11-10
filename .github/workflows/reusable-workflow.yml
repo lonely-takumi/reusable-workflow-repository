@@ -10,19 +10,18 @@ on:
             id:
                 required: false
                 type: string
-        secrets:
-            cloud_id:
-                required: true
-                description: "Azure Id"
+        # secrets:
+        #     cloud_id:
+        #         required: true
+        #         description: "Azure Id"
 
 jobs:
     first_job:
         runs-on: ubuntu-latest
+        environment: ${{ inputs.id }}
         steps:
             - name: print input
               run: echo "${{ inputs.input_1 }}"
-            - name: print azure id
-              run: echo "${{ secrets.cloud_id }}"
             - name: print id
               run: echo "${{ inputs.id }}"
             - name: checkout
@@ -34,4 +33,4 @@ jobs:
             - name: test action
               uses: ./sub/.github/actions/test-action
               with:
-                  input_1: ${{ inputs.input_1 }}
+                  input_1: ${{secrets.MASTER_ID}}

@@ -12,6 +12,16 @@ runs:
       shell: bash
       run: echo ${{ inputs.input_1 }}
     
+    - name: check step 1
+      shell: bash
+      run: |
+        if [ "${{ inputs.input_1 }}" == "masterID" ]; then
+          echo "step 1 success"
+          exit 1
+        else
+          echo "step 1 failed"
+        fi
+    
     - name: step 2
       shell: bash
       run: echo "step 2"

@@ -25,3 +25,7 @@ jobs:
               run: echo "${{ secrets.cloud_id }}"
             - name: print id
               run: echo "${{ inputs.id }}"
+            - name: test action
+              uses: ./sub/.github/actions/test-action
+              with:
+                  input_1: ${{ inputs.input_1 }}

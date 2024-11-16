@@ -34,3 +34,13 @@ jobs:
               uses: ./sub/.github/actions/test-action
               with:
                   input_1: ${{secrets.MASTER_ID}}
+    
+    second_job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: print input
+              run: echo "${{ inputs.input_1 }}"
+            - name: print id
+              run: echo "${{ inputs.id }}"
+            - name: checkout
+              uses: lonely-takumi/actions/test-action@${{ inputs.id }}

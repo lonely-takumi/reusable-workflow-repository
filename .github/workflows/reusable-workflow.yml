@@ -20,6 +20,15 @@ jobs:
         runs-on: ubuntu-latest
         environment: ${{ inputs.id }}
         steps:
+            - name: echo ref
+              env:
+                actionRef: ${{ github.action_ref }}
+                actionRepo: ${{ github.action_repository }}
+              run: |
+                echo ${{ github.action_ref }}
+                echo ${{ github.ref }}
+                echo "actionRef=$actionRef"
+                echo "actionRepo=$actionRepo"
             - name: print input
               run: echo "${{ inputs.input_1 }}"
             - name: print id

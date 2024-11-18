@@ -29,13 +29,14 @@ jobs:
                 actionRef: ${{ github.action_ref }}
                 actionRepo: ${{ github.action_repository }}
                 ref: ${{ github.ref }}
+                refName: ${{ github.ref_name }}
               run: |
                 echo "Action Ref: ${{ github.action_ref }}"
                 echo "Repository: ${{ github.action_repository }}"
                 echo "Ref: $ref"
                 echo "Action Ref (env): $actionRef"
                 echo "Action Repo (env): $actionRepo"
-                echo ${{ github.ref_name }}
+                echo "RefName (env): $refName"
                 echo ${{ github.workflow_ref}}
             - name: read metadata
               run: |

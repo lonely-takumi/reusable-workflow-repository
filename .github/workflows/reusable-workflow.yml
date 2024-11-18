@@ -51,5 +51,3 @@ jobs:
               run: echo "${{ inputs.input_1 }}"
             - name: print id
               run: echo "${{ inputs.id }}"
-            - name: checkout
-              uses: lonely-takumi/actions/test-action@${{ inputs.id }}

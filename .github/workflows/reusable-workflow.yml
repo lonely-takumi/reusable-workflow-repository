@@ -2,18 +2,18 @@ name: Reusable Workflow
 
 on:
     workflow_call:
-        inputs:
-            input_1:
-                description: "input 1"
-                required: true
-                type: string
-            id:
-                required: false
-                type: string
-        secrets:
-            cloud_id:
-                required: true
-                description: "Azure Id"
+        # inputs:
+        #     input_1:
+        #         description: "input 1"
+        #         required: true
+        #         type: string
+        #     id:
+        #         required: false
+        #         type: string
+        # secrets:
+        #     cloud_id:
+        #         required: true
+        #         description: "Azure Id"
 
 jobs:
     first_job:
@@ -28,25 +28,25 @@ jobs:
                 echo ${{ github.ref }}
                 echo "actionRef=$actionRef"
                 echo "actionRepo=$actionRepo"
-            - name: print input
-              run: echo "${{ inputs.input_1 }}"
-            - name: print id
-              run: echo "${{ inputs.id }}"
-            - name: checkout
-              uses: actions/checkout@v4
-              with:
-                repository: lonely-takumi/reusable-workflow-repository
-                ref: main
-                path: sub
-            - name: test action
-              uses: ./sub/.github/actions/test-action
-              with:
-                  input_1: ${{secrets.MASTER_ID}}
+    #         - name: print input
+    #           run: echo "${{ inputs.input_1 }}"
+    #         - name: print id
+    #           run: echo "${{ inputs.id }}"
+    #         - name: checkout
+    #           uses: actions/checkout@v4
+    #           with:
+    #             repository: lonely-takumi/reusable-workflow-repository
+    #             ref: main
+    #             path: sub
+    #         - name: test action
+    #           uses: ./sub/.github/actions/test-action
+    #           with:
+    #               input_1: ${{secrets.MASTER_ID}}
     
-    second_job:
-        runs-on: ubuntu-latest
-        steps:
-            - name: print input
-              run: echo "${{ inputs.input_1 }}"
-            - name: print id
-              run: echo "${{ inputs.id }}"
+    # second_job:
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #         - name: print input
+    #           run: echo "${{ inputs.input_1 }}"
+    #         - name: print id
+    #           run: echo "${{ inputs.id }}"

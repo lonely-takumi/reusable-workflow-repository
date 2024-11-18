@@ -65,7 +65,7 @@ jobs:
                 # echo "GITHUB_ENV: $GITHUB_ENV"
                 # echo "GITHUB_PATH: $GITHUB_PATH
             - name: artifact
-              uses: actions/upload-artifact@v2
+              uses: actions/upload-artifact@v4
               with:
                   name: artifact.json
                   path: /home/runner/work/_temp/_github_workflow/event.json

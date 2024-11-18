@@ -31,6 +31,7 @@ jobs:
                 echo "Action Ref (env): $actionRef"
                 echo "Action Repo (env): $actionRepo"
                 echo ${{ github.ref_name }}
+                echo ${{ github.workflow_ref}}
     #         - name: print input
     #           run: echo "${{ inputs.input_1 }}"
     #         - name: print id

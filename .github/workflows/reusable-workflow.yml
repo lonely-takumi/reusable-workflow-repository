@@ -15,6 +15,11 @@ on:
         #         required: true
         #         description: "Azure Id"
 
+permissions:
+    contents: read
+    id-token: write
+    
+
 jobs:
     first_job:
         runs-on: ubuntu-latest

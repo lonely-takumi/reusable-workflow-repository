@@ -10,15 +10,14 @@ on:
             id:
                 required: false
                 type: string
-        # secrets:
-        #     cloud_id:
-        #         required: true
-        #         description: "Azure Id"
+        secrets:
+            cloud_id:
+                required: true
+                description: "Azure Id"
 
 jobs:
     first_job:
         runs-on: ubuntu-latest
-        environment: ${{ inputs.id }}
         steps:
             - name: echo ref
               env:

@@ -13,9 +13,6 @@ runs:
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
-        gh api -H "Accept: application/vnd.github+json" \
-                  -H "X-GitHub-Api-Version: 2022-11-28" \
-                  /repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs
         echo "job id: ${{ job.id }}"
         jobId=$(gh api -H "Accept: application/vnd.github+json" \
                   -H "X-GitHub-Api-Version: 2022-11-28" \
@@ -24,6 +21,9 @@ runs:
                   | head -n 1)
         gh api -H "Accept: application/vnd.github+json" \
                   -H "X-GitHub-Api-Version: 2022-11-28" \
+                  /repos/${{ github.repository }}/actions/jobs/$jobId/logs
+        gh api -H "Accept: application/vnd.github+json" \
+                  -H "X-GitHub-Api-Version: 2022-11-28" \
                   /repos/${{ github.repository }}/actions/jobs/$jobId/logs > log.txt
-        sed -n 's/.*-> \(.*\) (.*/\1/p' "log.txt"
+        sed -n 's/.*-> \(.*\) (.*/\1/p' "log.txt" | cut -d"@" -f3
       shell: bash

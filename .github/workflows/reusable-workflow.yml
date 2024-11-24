@@ -18,7 +18,7 @@ on:
 permissions:
     contents: read
     id-token: write
-
+    actions: read
 
 jobs:
     first_job:
@@ -28,47 +28,10 @@ jobs:
               uses: lonely-takumi/reusable-workflow-repository/.github/actions/test-action@v8
               with:
                   input_1: ate
-            - name: echo ref
-              env:
-                actionRef: ${{ github.action_ref }}
-                actionRepo: ${{ github.action_repository }}
-                ref: ${{ github.ref }}
-                refName: ${{ github.ref_name }}
-              run: |
-                echo "Action Ref: ${{ github.action_ref }}"
-                echo "Repository: ${{ github.action_repository }}"
-                echo "Ref: $ref"
-                echo "Action Ref (env): $actionRef"
-                echo "Action Repo (env): $actionRepo"
-                echo "RefName (env): $refName"
-                echo ${{ github.workflow_ref}}
-            - name: read metadata
-              run: |
-                # echo "GITHUB_ACTION: $GITHUB_ACTION"
-                # echo "GITHUB_ACTION_PATH: $GITHUB_ACTION_PATH"
-                # echo "GITHUB_ACTION_REF: $GITHUB_ACTION_REF"
-                # echo "GITHUB_ACTION_REPOSITORY: $GITHUB_ACTION_REPOSITORY"
-                # echo "GITHUB_ACTION_SHA: $GITHUB_ACTION_SHA"
-                # echo "GITHUB_ACTION_WORKFLOW: $GITHUB_ACTION_WORKFLOW"
-                # echo "GITHUB_ACTION_WORKSPACE: $GITHUB_ACTION_WORKSPACE"
-                # echo "GITHUB_ACTOR: $GITHUB_ACTOR"
-                # echo "GITHUB_API_URL: $GITHUB_API_URL"
-                # echo "GITHUB_BASE_REF: $GITHUB_BASE_REF"
-                # echo "GITHUB_EVENT_NAME: $GITHUB_EVENT_NAME"
-                # echo "GITHUB_EVENT_PATH: $GITHUB_EVENT_PATH"
-                # echo "GITHUB_HEAD_REF: $GITHUB_HEAD_REF"
-                # echo "GITHUB_JOB: $GITHUB_JOB"
-                # echo "GITHUB_REF: $GITHUB_REF"
-                # echo "GITHUB_REPOSITORY: $GITHUB_REPOSITORY"
-                # echo "GITHUB_REPOSITORY_OWNER: $GITHUB_REPOSITORY_OWNER"
-                # echo "GITHUB_RUN_ID: $GITHUB_RUN_ID"
-                # echo "GITHUB_RUN_NUMBER: $GITHUB_RUN_NUMBER"
-                # echo "GITHUB_SERVER_URL: $GITHUB_SERVER_URL"
-                # echo "GITHUB_SHA: $GITHUB_SHA"
-                # echo "GITHUB_WORKFLOW: $GITHUB_WORKFLOW"
-                # echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
-                # echo "GITHUB_ENV: $GITHUB_ENV"
-                # echo "GITHUB_PATH: $GITHUB_PATH
+            - name: get caller ref
+              uses: lonely-takumi/reusable-workflow-repository/.github/actions/get-caller-ref@main
+              with:
+                  action-path: .github/actions/test-action
             - name: artifact
               uses: actions/upload-artifact@v4
               with:

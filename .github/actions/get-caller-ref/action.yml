@@ -1,0 +1,23 @@
+name: get caller ref
+
+inputs:
+  action-path:
+    required: true
+  # github-token:
+  #   required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: get caller ref
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        gh api -H "Accept: application/vnd.github+json" \
+                  -H "X-GitHub-Api-Version: 2022-11-28" \
+                  /repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/runs
+        gh api -H "Accept: application/vnd.github+json" \
+                  -H "X-GitHub-Api-Version: 2022-11-28" \
+                  /repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/runs
+                  --jq '.jobs[] | select(.name | endswith(" / ${{ github.job }}") and .status == "In Progress") | .id | first'
+      shell: bash

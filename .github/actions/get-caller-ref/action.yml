@@ -15,9 +15,9 @@ runs:
       run: |
         gh api -H "Accept: application/vnd.github+json" \
                   -H "X-GitHub-Api-Version: 2022-11-28" \
-                  /repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/runs
+                  /repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs
         gh api -H "Accept: application/vnd.github+json" \
                   -H "X-GitHub-Api-Version: 2022-11-28" \
-                  /repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/runs
+                  /repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs
                   --jq '.jobs[] | select(.name | endswith(" / ${{ github.job }}") and .status == "In Progress") | .id | first'
       shell: bash

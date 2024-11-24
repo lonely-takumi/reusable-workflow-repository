@@ -17,6 +17,13 @@ jobs:
                 echo "first step"
             
             - name: get caller ref
+              id: get-caller-ref
               uses: lonely-takumi/reusable-workflow-repository/.github/actions/get-caller-ref@main
               with:
                   action-path: ${{ github.action_path}}
+            
+            - name: artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: log_2.txt
+                  path: ${{ steps.get-caller-ref.outputs.logFilePath }}

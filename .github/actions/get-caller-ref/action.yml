@@ -6,9 +6,6 @@ inputs:
   # github-token:
   #   required: true
 
-outputs:
-  logFilePath:
-
 runs:
   using: "composite"
   steps:

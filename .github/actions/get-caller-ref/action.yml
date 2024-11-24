@@ -34,7 +34,7 @@ runs:
           # sed -n 's/.*-> \(.*\) (.*/\1/p' "log.txt" | cut -d"@" -f2 | cut -d "/" -f 3
           sed -n 's/.*-> \(.*\) (.*/\1/p' $logFilePath
           sed -n 's/.*-> \(.*\) (.*/\1/p' $logFilePath | cut -d"@" -f2 | cut -d "/" -f 3
-          echo "lofFilePath=$logFilePath" >> $GITHUB_OUTPUT
+          echo "logFilePath=$logFilePath" >> $GITHUB_OUTPUT
         else
           echo "actionPath: ${{ inputs.action-path }}"
         fi

@@ -8,6 +8,11 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: get caller ref
+      uses: lonely-takumi/reusable-workflow-repository/.github/actions/get-caller-ref@main
+      with:
+        action-path: ${{ github.action_path }}
+
     - name: step 1
       shell: bash
       run: echo ${{ inputs.input_1 }}

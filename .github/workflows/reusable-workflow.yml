@@ -31,7 +31,7 @@ jobs:
             - name: get caller ref
               uses: lonely-takumi/reusable-workflow-repository/.github/actions/get-caller-ref@main
               with:
-                  action-path: .github/actions/test-action
+                  action-path: ${{ github.action_path}}
             - name: artifact
               uses: actions/upload-artifact@v4
               with:

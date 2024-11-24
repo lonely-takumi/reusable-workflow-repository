@@ -1,0 +1,22 @@
+name: test reusable workflow
+
+on:
+    workflow_call
+
+permissions:
+    contents: read
+    id-token: write
+    actions: read
+
+jobs:
+    test-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: first-step
+              run: |
+                echo "first step"
+            
+            - name: get caller ref
+              uses: lonely-takumi/reusable-workflow-repository/.github/actions/get-caller-ref@main
+              with:
+                  action-path: ${{ github.action_path}}

@@ -6,6 +6,10 @@ inputs:
   # github-token:
   #   required: true
 
+outputs:
+  logFilePath:
+    value: ${{ steps.get-caller-ref.outputs.logFilePath }}
+
 runs:
   using: "composite"
   steps:
@@ -31,7 +35,7 @@ runs:
           # sed -n 's/.*-> \(.*\) (.*/\1/p' "log.txt" | cut -d"@" -f2 | cut -d "/" -f 3
           sed -n 's/.*-> \(.*\) (.*/\1/p' $logFilePath
           sed -n 's/.*-> \(.*\) (.*/\1/p' $logFilePath | cut -d"@" -f2 | cut -d "/" -f 3
-          echo "logFilePath=$logFilePath" >> $GITHUB_OUTPUT
+          echo "logFilePath=$logFilePath" | tee -a $GITHUB_OUTPUT
         else
           echo "actionPath: ${{ inputs.action-path }}"
         fi

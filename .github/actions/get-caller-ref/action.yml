@@ -29,6 +29,6 @@ runs:
           sed -n 's/.*-> \(.*\) (.*/\1/p' "log.txt"
           sed -n 's/.*-> \(.*\) (.*/\1/p' "log.txt" | cut -d"@" -f2 | cut -d "/" -f 3
         else
-          echo "${{ inputs.action-path }}"
+          echo "actionPath: ${{ inputs.action-path }}"
         fi
       shell: bash

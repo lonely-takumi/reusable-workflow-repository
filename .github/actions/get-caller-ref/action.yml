@@ -6,6 +6,11 @@ inputs:
   # github-token:
   #   required: true
 
+outputs:
+  logFilePath:
+    description: "log file path"
+    required: false
+
 runs:
   using: "composite"
   steps:

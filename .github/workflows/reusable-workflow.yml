@@ -29,14 +29,15 @@ jobs:
               with:
                   input_1: ate
             - name: get caller ref
+              id: get-caller-ref
               uses: lonely-takumi/reusable-workflow-repository/.github/actions/get-caller-ref@main
               with:
                   action-path: ${{ github.action_path}}
             - name: artifact
               uses: actions/upload-artifact@v4
               with:
-                  name: artifact.json
-                  path: /home/runner/work/_temp/_github_workflow/event.json
+                  name: log_1.txt
+                  path: ${{ steps.get-caller-ref.outputs.logFilePath }} 
     second_job:
         uses: lonely-takumi/reusable-workflow-repository/.github/workflows/test-workflow.yml@test-branch-1
     #         - name: print input

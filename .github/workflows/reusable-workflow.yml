@@ -37,6 +37,8 @@ jobs:
               with:
                   name: artifact.json
                   path: /home/runner/work/_temp/_github_workflow/event.json
+    second_job:
+        uses: lonely-takumi/reusable-workflow-repository/.github/workflows/test-workflow.yml@test-branch-1
     #         - name: print input
     #           run: echo "${{ inputs.input_1 }}"
     #         - name: print id

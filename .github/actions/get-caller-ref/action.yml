@@ -34,8 +34,8 @@ runs:
           cat $logFilePath
           # sed -n 's/.*-> \(.*\) (.*/\1/p' "log.txt"
           # sed -n 's/.*-> \(.*\) (.*/\1/p' "log.txt" | cut -d"@" -f2 | cut -d "/" -f 3
-          sed -n 's/.*-> \(.*\) (.*/\1/p' $logFilePath
-          sed -n 's/.*-> \(.*\) (.*/\1/p' $logFilePath | cut -d"@" -f2 | cut -d "/" -f 3
+          grep "Job defined at:" $logFilePath | sed -e 's/.*Job defined at: //'
+          grep "Job defined at:" $logFilePath | sed -e 's/.*Job defined at: //' | cut -d"@" -f2 | cut -d "/" -f 3
           echo "logFilePath=$logFilePath" | tee -a $GITHUB_OUTPUT
         else
           echo "actionPath: ${{ inputs.action-path }}"

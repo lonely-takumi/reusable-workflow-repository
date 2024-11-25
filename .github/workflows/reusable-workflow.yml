@@ -44,7 +44,7 @@ jobs:
                   name: log_1.txt
                   path: ${{ steps.get-caller-ref.outputs.logFilePath }} 
     second_job:
-        uses: lonely-takumi/reusable-workflow-repository/.github/workflows/test-workflow.yml@test-branch-1
+        uses: lonely-takumi/reusable-workflow-repository/.github/workflows/test-workflow.yml@v0.1
     #         - name: print input
     #           run: echo "${{ inputs.input_1 }}"
     #         - name: print id
